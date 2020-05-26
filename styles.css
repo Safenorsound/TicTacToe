@@ -4,6 +4,26 @@
   box-sizing: border-box;
 }
 
+:root {
+  --cell-size: 8rem;
+}
+
 body {
   margin: 0;
+}
+
+.board {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background: black;
+  border: 0.1rem solid white;
 }
