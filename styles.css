@@ -61,4 +61,13 @@ body {
   width: calc(var(--mark-size) * 0.15);
   height: var(--mark-size);
   background-color: black;
+  position: absolute;
+}
+
+.cell.x::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after {
+  transform: rotate(-45deg);
 }
