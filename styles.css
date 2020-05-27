@@ -122,3 +122,30 @@ board.circle .cell:not(.x):not(circle):hover::before {
   height: calc(var(--mark-size) * 0.7);
   background-color: white;
 }
+
+.winning-message {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+}
+
+.winning-message button {
+  font-size: 3rem;
+  background-color: white;
+  border: 0.1rem solid black;
+  cursor: pointer;
+}
+
+.winning-message button:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
