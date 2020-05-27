@@ -66,13 +66,13 @@ body {
 /* Creating the X */
 .cell.x::before,
 .cell.x::after,
-.board.x .cell:hover::before,
+.board.x .cell:not(.x):hover::before,
 .board.x .cell:hover::after {
   content: '';
   width: calc(var(--mark-size) * 0.15);
   height: var(--mark-size);
-  background-color: black;
   position: absolute;
+  background-color: black;
 }
 
 .cell.x::before,
