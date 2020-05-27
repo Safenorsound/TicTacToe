@@ -75,8 +75,8 @@ body {
 /* Creating the X and Hover*/
 .cell.x::before,
 .cell.x::after,
-.board.x .cell:not(.x):not(.circle):hover::before,
-.board.x .cell:not(.x):not(.circle):hover::after {
+.board.x .cell:hover::before,
+.board.x .cell:hover::after {
   content: '';
   width: calc(var(--mark-size) * 0.15);
   height: var(--mark-size);
@@ -84,6 +84,7 @@ body {
   background-color: black;
 }
 
+/* Creating the "X" Shape */
 .cell.x::before,
 .board.x .cell:hover::before {
   transform: rotate(45deg);
