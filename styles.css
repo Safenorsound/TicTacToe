@@ -54,14 +54,20 @@ body {
   border-bottom: none;
 }
 
+/* Not Allowed Effect Over Hover */
 .cell.x,
 .cell.circle {
   cursor: not-allowed;
 }
 
+.board.x .cell:hover {
+}
+
 /* Creating the X */
 .cell.x::before,
-.cell.x::after {
+.cell.x::after,
+.board.x .cell:hover::before,
+.board.x .cell:hover::after {
   content: '';
   width: calc(var(--mark-size) * 0.15);
   height: var(--mark-size);
@@ -69,11 +75,13 @@ body {
   position: absolute;
 }
 
-.cell.x::before {
+.cell.x::before,
+.board.x .cell:hover::before {
   transform: rotate(45deg);
 }
 
-.cell.x::after {
+.cell.x::after,
+.board.x .cell:hover::after {
   transform: rotate(-45deg);
 }
 
