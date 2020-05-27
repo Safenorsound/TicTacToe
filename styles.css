@@ -31,6 +31,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .cell:first-child,
@@ -53,8 +54,12 @@ body {
   border-bottom: none;
 }
 
-/* creating the X */
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
 
+/* Creating the X */
 .cell.x::before,
 .cell.x::after {
   content: '';
@@ -70,4 +75,27 @@ body {
 
 .cell.x::after {
   transform: rotate(-45deg);
+}
+
+/* Creating the Circle */
+.cell.circle::before,
+.cell.circle::after {
+  content: '';
+  width: var(--mark-size);
+  height: var(--mark-size);
+  background-color: black;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.circle::before {
+  width: var(--mark-size);
+  height: var(--mark-size);
+  background: black;
+}
+
+.cell.circle::after {
+  width: calc(var(--mark-size) * 0.7);
+  height: calc(var(--mark-size) * 0.7);
+  background-color: white;
 }
