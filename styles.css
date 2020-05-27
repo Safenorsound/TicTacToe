@@ -75,8 +75,8 @@ body {
 /* Creating the X and Hover*/
 .cell.x::before,
 .cell.x::after,
-.board.x .cell:hover::before,
-.board.x .cell:hover::after {
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
   content: '';
   width: calc(var(--mark-size) * 0.15);
   height: var(--mark-size);
@@ -86,12 +86,12 @@ body {
 
 /* Creating the "X" Shape */
 .cell.x::before,
-.board.x .cell:hover::before {
+.board.x .cell:not(.x):not(.circle):hover::before {
   transform: rotate(45deg);
 }
 
 .cell.x::after,
-.board.x .cell:hover::after {
+.board.x .cell:not(.x):not(.circle):hover::after {
   transform: rotate(-45deg);
 }
 
