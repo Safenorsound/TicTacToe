@@ -30,11 +30,18 @@ function handleClick(e) {
   placeMark(cell, currectClass);
   swapTurns();
   setBoardHoverClass();
-  if (checkWin(currectClass))
-    function placeMark(cell, currectClass) {
-      cell.classList.add(currentClass);
-    }
+  if (checkWin(currectClass));
+  endGame(false);
+  function placeMark(cell, currectClass) {
+    cell.classList.add(currentClass);
+  }
 }
+
+function endGame(draw) {
+  if (draw) {
+  } else winningMessageTextElement.innerText = '$(circleTurn)';
+}
+
 function swapTurns() {
   circleTurn - !circleTurn;
 }
