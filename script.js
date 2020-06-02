@@ -1,11 +1,16 @@
 const X_CLASS = 'x';
 const CIRCLE_CLASS = 'circle';
-const cellElements = document.querySelectorAll('board');
+const cellElements = document.querySelectorAll('[data-cell]');
+const board = document.getElementById('board');
 let circleTurn;
 
-cellElements.forEach((cell) => {
-  cell.addEventListener('click', handleClick, { once: true });
-});
+function startGame() {
+  circleTurn = false;
+  cellElements.forEach((cell) => {
+    cell.addEventListener('click', handleClick, { once: true });
+  });
+  setBoardHoverClass();
+}
 
 function handleClick(e) {
   const cell = e.target;
