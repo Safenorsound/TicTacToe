@@ -23,8 +23,7 @@ restartButton.addEventListener('click', startGame)
 
 function startGame() {
   circleTurn = false;
-  cellElements.forEach((cell) => {
-    
+  cellElements.forEach(cell => {
     cell.classList.remove(X_CLASS)
     cell.classList.remove(CIRCLE_CLASS)
     cell.removeEventListener('click, handleClick')
@@ -34,18 +33,21 @@ function startGame() {
   winningMessageElement.classList.remove('show')
 }
 
+
+
+
 function handleClick(e) {
   const cell = e.target;
-  const currectClass = circleTurn ? currectClass : X_CLASS;
-  placeMark(cell, currectClass);
+  const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
+  placeMark(cell, currentClass);
 
-  if (checkWin(currectClass)){
+  if (checkWin(currentClass)){
   endGame(false);
 } else if (isDraw()) {
   endGame(true)
 } 
 
-  function placeMark(cell, currectClass) {
+  function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
   }
 }
@@ -83,7 +85,7 @@ function setBoardHoverClass() {
     board.classlist.add(X_CLASS);
   }
 }
-function checkWin(currectClass) {
+function checkWin(currentClass) {
   return winning_Combinations.some((combination) => {
     return combinations.every((index) => {
       return cellElements(index).classlist.contains(currentClass);
