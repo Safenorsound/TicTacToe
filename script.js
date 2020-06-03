@@ -12,7 +12,7 @@ const winning_Combinations = [
 ];
 const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
-const winningMessageElement = document.getElementByID('winningMessage');
+const winningMessageElement = document.getElementById('winningMessage');
 const restartButton = document.getElementById('restartButton');
 const winningMessageTextElement = document.querySelector(
   '[data-winning-message-text]'
@@ -28,8 +28,8 @@ function startGame() {
   cellElements.forEach((cell) => {
     cell.classList.remove(X_CLASS);
     cell.classList.remove(CIRCLE_CLASS);
-    cell.removeEventListener('click, handleClick');
-    cell.addEventListener('click', handleClick, { once: true });
+    cell.removeEventListener('click', handleClick);
+    cell.addEventListener('click, handleClick', { once: true });
   });
   setBoardHoverClass();
   winningMessageElement.classList.remove('show');
@@ -59,6 +59,7 @@ function endGame(draw) {
   }
   winningMessageElement.classList.add('show');
 }
+
 function isDraw() {
   return [...cellElements].every((cell) => {
     return cell.classList.contains(
@@ -81,7 +82,7 @@ function setBoardHoverClass() {
   if (circleTurn) {
     board.classList.add(CIRCLE_CLASS);
   } else {
-    board.classlist.add(X_CLASS);
+    board.classList.add(X_CLASS);
   }
 }
 function checkWin(currentClass) {
