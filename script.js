@@ -1,14 +1,14 @@
 const X_CLASS = 'x';
 const CIRCLE_CLASS = 'circle';
-const winning_Combinations = [
+const WINNING_COMBINATIONS = [
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
+  [0, 4, 8],
+  [2, 4, 6],
   [0, 3, 6],
   [1, 4, 7],
   [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
 ];
 const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
@@ -29,7 +29,7 @@ function startGame() {
     cell.classList.remove(X_CLASS);
     cell.classList.remove(CIRCLE_CLASS);
     cell.removeEventListener('click', handleClick);
-    cell.addEventListener('click, handleClick', { once: true });
+    cell.addEventListener('click', handleClick, { once: true });
   });
   setBoardHoverClass();
   winningMessageElement.classList.remove('show');
@@ -39,8 +39,10 @@ function handleClick(e) {
   const cell = e.target;
   const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
 
+  // Places the mark
   placeMark(cell, currentClass);
 
+  // Checks for win
   if (checkWin(currentClass)) {
     endGame(false);
   } else if (isDraw()) {
@@ -53,7 +55,7 @@ function handleClick(e) {
 
 function endGame(draw) {
   if (draw) {
-    winningMessageElement.innerText = 'Draw!';
+    winningMessageTextElement.innerText = 'Draw!';
   } else {
     winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Wins!`;
   }
@@ -62,8 +64,8 @@ function endGame(draw) {
 
 function isDraw() {
   return [...cellElements].every((cell) => {
-    return cell.classList.contains(
-      X_CLASS || cell.classList.contains(CIRCLE_CLASS)
+    return (
+      cell.classList.contains(X_CLASS) || cell.classList.contains(CIRCLE_CLASS)
     );
   });
 }
@@ -73,7 +75,7 @@ function placeMark(cell, currentClass) {
 }
 
 function swapTurns() {
-  circleTurn - !circleTurn;
+  circleTurn = !circleTurn;
 }
 
 function setBoardHoverClass() {
@@ -85,10 +87,11 @@ function setBoardHoverClass() {
     board.classList.add(X_CLASS);
   }
 }
+
 function checkWin(currentClass) {
-  return winning_Combinations.some((combination) => {
-    return combinations.every((index) => {
-      return cellElements(index).classlist.contains(currentClass);
+  return WINNING_COMBINATIONS.some((combination) => {
+    return combination.every((index) => {
+      return cellElements[index].classList.contains(currentClass);
     });
   });
 }

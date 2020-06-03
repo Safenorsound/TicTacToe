@@ -83,7 +83,6 @@ body {
   width: calc(var(--mark-size) * 0.15);
   height: var(--mark-size);
   position: absolute;
-  background-color: black;
 }
 
 /* Creating the "X" Shape */
